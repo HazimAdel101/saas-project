@@ -65,6 +65,10 @@ const config: Config = {
           '5': 'hsl(var(--chart-5))',
         },
       },
+      spacing: {
+        '18': '4.5rem',
+        '88': '22rem',
+      },
       keyframes: {
         'accordion-down': {
           from: {
@@ -82,15 +86,86 @@ const config: Config = {
             height: '0',
           },
         },
+        'fade-in': {
+          '0%': { opacity: '0', transform: 'translateY(-10px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        'slide-in-right': {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(0)' },
+        },
+        'slide-in-left': {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(0)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'fade-in': 'fade-in 0.3s ease-out',
+        'slide-in-right': 'slide-in-right 0.3s ease-out',
+        'slide-in-left': 'slide-in-left 0.3s ease-out',
       },
     },
   },
   plugins: [
     require('tailwindcss-animate'),
+    function({ addUtilities }: any) {
+      const newUtilities = {
+        '.rtl': {
+          direction: 'rtl',
+        },
+        '.ltr': {
+          direction: 'ltr',
+        },
+        '.rtl-flip': {
+          transform: 'scaleX(-1)',
+        },
+        '.rtl-space-x-reverse > :not([hidden]) ~ :not([hidden])': {
+          '--tw-space-x-reverse': '1',
+        },
+        '.rtl-space-y-reverse > :not([hidden]) ~ :not([hidden])': {
+          '--tw-space-y-reverse': '1',
+        },
+        '.rtl-divide-x-reverse > :not([hidden]) ~ :not([hidden])': {
+          '--tw-divide-x-reverse': '1',
+        },
+        '.rtl-divide-y-reverse > :not([hidden]) ~ :not([hidden])': {
+          '--tw-divide-y-reverse': '1',
+        },
+        '.start-0': {
+          'inset-inline-start': '0px',
+        },
+        '.start-auto': {
+          'inset-inline-start': 'auto',
+        },
+        '.end-0': {
+          'inset-inline-end': '0px',
+        },
+        '.end-auto': {
+          'inset-inline-end': 'auto',
+        },
+        '.ms-auto': {
+          'margin-inline-start': 'auto',
+        },
+        '.me-auto': {
+          'margin-inline-end': 'auto',
+        },
+        '.ps-4': {
+          'padding-inline-start': '1rem',
+        },
+        '.pe-4': {
+          'padding-inline-end': '1rem',
+        },
+        '.border-s': {
+          'border-inline-start-width': '1px',
+        },
+        '.border-e': {
+          'border-inline-end-width': '1px',
+        },
+      };
+      addUtilities(newUtilities);
+    },
   ],
 };
 

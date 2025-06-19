@@ -78,4 +78,150 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* RTL/LTR Support */
+  [dir="rtl"] {
+    direction: rtl;
+  }
+
+  [dir="ltr"] {
+    direction: ltr;
+  }
+
+  /* Numbers should always be LTR */
+  .ltr-numbers {
+    direction: ltr;
+    unicode-bidi: bidi-override;
+  }
+
+  /* Professional navbar enhancements */
+  .navbar-glass {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.8);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .dark .navbar-glass {
+    background: rgba(0, 0, 0, 0.8);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Smooth transitions for RTL/LTR switching */
+  .rtl-transition {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Logo animation */
+  .logo-hover {
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .logo-hover:hover {
+    transform: scale(1.05);
+  }
+
+  /* Professional button styles */
+  .btn-professional {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .btn-professional::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  .btn-professional:hover::before {
+    left: 100%;
+  }
+}
+
+@layer components {
+  /* RTL-aware spacing utilities */
+  .space-x-rtl > :not([hidden]) ~ :not([hidden]) {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  [dir="ltr"] .space-x-rtl > :not([hidden]) ~ :not([hidden]) {
+    margin-left: 0.5rem;
+  }
+
+  [dir="rtl"] .space-x-rtl > :not([hidden]) ~ :not([hidden]) {
+    margin-right: 0.5rem;
+  }
+
+  /* Professional navigation item styles */
+  .nav-item {
+    @apply relative px-3 py-2 text-sm font-medium transition-all duration-200;
+    @apply text-muted-foreground hover:text-foreground;
+  }
+
+  .nav-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #8b5cf6, #3b82f6);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+
+  .nav-item:hover::after {
+    width: 100%;
+  }
+
+  /* Active navigation item styles */
+  .nav-item-active {
+    background: linear-gradient(90deg, #8b5cf6, #3b82f6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
+  }
+
+  /* Ensure gradient text works in all browsers */
+  .gradient-text {
+    background: linear-gradient(90deg, #8b5cf6, #3b82f6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  /* Professional dropdown styles */
+  .dropdown-professional {
+    @apply bg-background/95 backdrop-blur-md border border-border/50;
+    @apply shadow-lg rounded-lg p-1;
+    animation: fade-in 0.2s ease-out;
+  }
+
+  /* Mobile menu improvements */
+  .mobile-menu {
+    @apply bg-background/95 backdrop-blur-md;
+  }
+
+  /* Badge positioning for RTL */
+  .badge-rtl {
+    position: absolute;
+    top: -8px;
+  }
+
+  [dir="ltr"] .badge-rtl {
+    right: -8px;
+  }
+
+  [dir="rtl"] .badge-rtl {
+    left: -8px;
+  }
 }

@@ -1,103 +1,147 @@
-import Image from "next/image";
+'use client';
+
+import { useLanguageStore } from '@/lib/store';
+import { translations } from '@/lib/translations';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Star, Users, Zap, Shield, ArrowRight, CheckCircle } from 'lucide-react';
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const { language } = useLanguageStore();
+  const t = translations[language];
+  const isRTL = language === 'ar';
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  const features = [
+    {
+      icon: <Zap className="h-6 w-6" />,
+      title: isRTL ? 'أدوات الذكاء الاصطناعي' : 'AI-Powered Tools',
+      description: isRTL ? 'احصل على أحدث أدوات الذكاء الاصطناعي لتحسين إنتاجيتك' : 'Get the latest AI tools to boost your productivity'
+    },
+    {
+      icon: <Shield className="h-6 w-6" />,
+      title: isRTL ? 'أمان متقدم' : 'Enterprise Security',
+      description: isRTL ? 'حماية متقدمة لبياناتك وخصوصيتك' : 'Advanced protection for your data and privacy'
+    },
+    {
+      icon: <Users className="h-6 w-6" />,
+      title: isRTL ? 'فريق متعاون' : 'Team Collaboration',
+      description: isRTL ? 'أدوات تعاون فعالة لفريقك' : 'Effective collaboration tools for your team'
+    }
+  ];
+
+  const stats = [
+    { number: '50K+', label: isRTL ? 'مستخدم نشط' : 'Active Users' },
+    { number: '200+', label: isRTL ? 'أداة متميزة' : 'Premium Tools' },
+    { number: '99.9%', label: isRTL ? 'وقت التشغيل' : 'Uptime' },
+    { number: '24/7', label: isRTL ? 'الدعم الفني' : 'Support' }
+  ];
+
+  return (
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="relative py-20 lg:py-32 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-50 dark:from-purple-950/20 dark:via-blue-950/20 dark:to-indigo-950/20"></div>
+        <div className="relative container mx-auto px-4 lg:px-6">
+          <div className={`max-w-4xl mx-auto text-center ${isRTL ? 'text-right' : 'text-left'} lg:text-center`}>
+            <Badge variant="secondary" className="mb-6 animate-fade-in">
+              <Star className="h-3 w-3 mr-1" />
+              {t.newFeature}
+            </Badge>
+
+            <h1 className="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600 bg-clip-text text-transparent animate-fade-in">
+              {t.heroTitle}
+            </h1>
+
+            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto animate-fade-in">
+              {t.heroSubtitle}
+            </p>
+
+            <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in ${isRTL ? 'sm:flex-row-reverse' : ''}`}>
+              <Button size="lg" className="btn-professional bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white shadow-lg hover:shadow-xl">
+                {t.getStarted}
+                <ArrowRight className={`h-4 w-4 ${isRTL ? 'mr-2 rotate-180' : 'ml-2'}`} />
+              </Button>
+              <Button variant="outline" size="lg" className="btn-professional">
+                {t.learnMore}
+              </Button>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-16 bg-background/50">
+        <div className="container mx-auto px-4 lg:px-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            {stats.map((stat, index) => (
+              <div key={index} className={`text-center ${isRTL ? 'text-right' : 'text-left'} lg:text-center`}>
+                <div className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-2">
+                  {stat.number}
+                </div>
+                <div className="text-muted-foreground font-medium">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4 lg:px-6">
+          <div className={`text-center mb-16 ${isRTL ? 'text-right' : 'text-left'} lg:text-center`}>
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4">
+              {isRTL ? 'لماذا تختار SaaSHub؟' : 'Why Choose SaaSHub?'}
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              {isRTL ? 'اكتشف الميزات التي تجعلنا الخيار الأفضل للشركات والمطورين' : 'Discover the features that make us the best choice for businesses and developers'}
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {features.map((feature, index) => (
+              <Card key={index} className="group hover:shadow-lg transition-all duration-300 border-border/50 hover:border-border">
+                <CardHeader className={isRTL ? 'text-right' : 'text-left'}>
+                  <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform duration-300">
+                    {feature.icon}
+                  </div>
+                  <CardTitle className="text-xl">{feature.title}</CardTitle>
+                </CardHeader>
+                <CardContent className={isRTL ? 'text-right' : 'text-left'}>
+                  <CardDescription className="text-base">
+                    {feature.description}
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-600 text-white">
+        <div className="container mx-auto px-4 lg:px-6">
+          <div className={`max-w-3xl mx-auto text-center ${isRTL ? 'text-right' : 'text-left'} lg:text-center`}>
+            <h2 className="text-3xl lg:text-4xl font-bold mb-6">
+              {isRTL ? 'ابدأ رحلتك اليوم' : 'Start Your Journey Today'}
+            </h2>
+            <p className="text-xl mb-8 text-white/90">
+              {isRTL ? 'انضم إلى آلاف المطورين والشركات التي تثق في منصتنا' : 'Join thousands of developers and companies who trust our platform'}
+            </p>
+            <div className={`flex flex-col sm:flex-row gap-4 justify-center items-center ${isRTL ? 'sm:flex-row-reverse' : ''}`}>
+              <Button size="lg" variant="secondary" className="btn-professional bg-white text-purple-600 hover:bg-white/90">
+                {t.getStarted}
+                <CheckCircle className={`h-4 w-4 ${isRTL ? 'mr-2' : 'ml-2'}`} />
+              </Button>
+              <Button size="lg" variant="outline" className="btn-professional border-white text-white hover:bg-white/10">
+                {t.contact}
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
