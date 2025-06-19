@@ -3,9 +3,9 @@ import type { Config } from 'tailwindcss';
 const config: Config = {
   darkMode: 'class',
   content: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     extend: {
@@ -87,76 +87,11 @@ const config: Config = {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
       },
-      // RTL-specific utilities
-      spacing: {
-        'rtl-1': '0.25rem',
-        'rtl-2': '0.5rem',
-        'rtl-3': '0.75rem',
-        'rtl-4': '1rem',
-        'rtl-6': '1.5rem',
-        'rtl-8': '2rem',
-      },
     },
   },
   plugins: [
     require('tailwindcss-animate'),
-    // RTL plugin
-    function({ addUtilities, theme, e }: any) {
-      const rtlUtilities = {
-        '.rtl-space-x-1 > :not([hidden]) ~ :not([hidden])': {
-          '--tw-space-x-reverse': '1',
-          'margin-right': 'calc(0.25rem * var(--tw-space-x-reverse))',
-          'margin-left': 'calc(0.25rem * calc(1 - var(--tw-space-x-reverse)))',
-        },
-        '.rtl-space-x-2 > :not([hidden]) ~ :not([hidden])': {
-          '--tw-space-x-reverse': '1',
-          'margin-right': 'calc(0.5rem * var(--tw-space-x-reverse))',
-          'margin-left': 'calc(0.5rem * calc(1 - var(--tw-space-x-reverse)))',
-        },
-        '.rtl-space-x-3 > :not([hidden]) ~ :not([hidden])': {
-          '--tw-space-x-reverse': '1',
-          'margin-right': 'calc(0.75rem * var(--tw-space-x-reverse))',
-          'margin-left': 'calc(0.75rem * calc(1 - var(--tw-space-x-reverse)))',
-        },
-        '.rtl-space-x-4 > :not([hidden]) ~ :not([hidden])': {
-          '--tw-space-x-reverse': '1',
-          'margin-right': 'calc(1rem * var(--tw-space-x-reverse))',
-          'margin-left': 'calc(1rem * calc(1 - var(--tw-space-x-reverse)))',
-        },
-        '.rtl-space-x-6 > :not([hidden]) ~ :not([hidden])': {
-          '--tw-space-x-reverse': '1',
-          'margin-right': 'calc(1.5rem * var(--tw-space-x-reverse))',
-          'margin-left': 'calc(1.5rem * calc(1 - var(--tw-space-x-reverse)))',
-        },
-        '.rtl-space-x-8 > :not([hidden]) ~ :not([hidden])': {
-          '--tw-space-x-reverse': '1',
-          'margin-right': 'calc(2rem * var(--tw-space-x-reverse))',
-          'margin-left': 'calc(2rem * calc(1 - var(--tw-space-x-reverse)))',
-        },
-        '.ltr-numbers': {
-          'direction': 'ltr',
-          'unicode-bidi': 'embed',
-          'display': 'inline-block',
-        },
-        '.rtl-flip': {
-          'transform': 'scaleX(-1)',
-        },
-        '.rtl-text-right': {
-          'text-align': 'right',
-        },
-        '.rtl-text-left': {
-          'text-align': 'left',
-        },
-        '.ltr-text-right': {
-          'text-align': 'right',
-        },
-        '.ltr-text-left': {
-          'text-align': 'left',
-        },
-      };
-
-      addUtilities(rtlUtilities);
-    },
   ],
 };
+
 export default config;
