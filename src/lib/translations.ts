@@ -2,7 +2,7 @@ export const translations = {
     en: {
       // Navigation
       home: 'Home',
-      products: 'Products',
+      products: 'Services',
       pricing: 'Pricing',
       about: 'About',
       contact: 'Contact',
@@ -25,6 +25,18 @@ export const translations = {
       viewAll: 'View All',
       popularProducts: 'Popular Products',
       categories: 'Categories',
+
+      // Services Page
+      servicesTitle: 'Our Premium Services',
+      servicesSubtitle: 'Unlock the power of AI and creativity with our curated selection of premium tools',
+      chatgptTitle: 'ChatGPT Plus',
+      chatgptDescription: 'Advanced AI conversations with GPT-4, faster responses, and priority access during peak times.',
+      canvaTitle: 'Canva Pro',
+      canvaDescription: 'Professional design tools with premium templates, brand kit, and advanced features.',
+      geminiTitle: 'Google Gemini Advanced',
+      geminiDescription: 'Google\'s most capable AI model with advanced reasoning and multimodal capabilities.',
+      subscribeNow: 'Subscribe Now',
+      learnMoreAbout: 'Learn More',
       
       // Product Details
       month: 'month',
@@ -74,7 +86,7 @@ export const translations = {
     ar: {
       // Navigation
       home: 'الرئيسية',
-      products: 'المنتجات',
+      products: 'الخدمات',
       pricing: 'الأسعار',
       about: 'من نحن',
       contact: 'اتصل بنا',
@@ -97,6 +109,18 @@ export const translations = {
       viewAll: 'عرض الكل',
       popularProducts: 'المنتجات الشائعة',
       categories: 'الفئات',
+
+      // Services Page
+      servicesTitle: 'خدماتنا المتميزة',
+      servicesSubtitle: 'اكتشف قوة الذكاء الاصطناعي والإبداع مع مجموعتنا المختارة من الأدوات المتميزة',
+      chatgptTitle: 'ChatGPT Plus',
+      chatgptDescription: 'محادثات ذكية متقدمة مع GPT-4، استجابات أسرع، وأولوية الوصول في أوقات الذروة.',
+      canvaTitle: 'Canva Pro',
+      canvaDescription: 'أدوات تصميم احترافية مع قوالب متميزة، مجموعة العلامة التجارية، ومميزات متقدمة.',
+      geminiTitle: 'Google Gemini Advanced',
+      geminiDescription: 'نموذج الذكاء الاصطناعي الأكثر قدرة من جوجل مع التفكير المتقدم والقدرات متعددة الوسائط.',
+      subscribeNow: 'اشترك الآن',
+      learnMoreAbout: 'اعرف المزيد',
       
       // Product Details
       month: 'شهر',

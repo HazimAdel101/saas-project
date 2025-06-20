@@ -142,6 +142,63 @@
   .btn-professional:hover::before {
     left: 100%;
   }
+
+  /* Fade-in animation */
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out;
+  }
+
+  /* Staggered animation for service cards */
+  .animate-fade-in-delay-1 {
+    animation: fade-in 0.6s ease-out 0.1s both;
+  }
+
+  .animate-fade-in-delay-2 {
+    animation: fade-in 0.6s ease-out 0.2s both;
+  }
+
+  .animate-fade-in-delay-3 {
+    animation: fade-in 0.6s ease-out 0.3s both;
+  }
+
+  /* Hover effects for service cards */
+  .service-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .service-card:hover {
+    transform: translateY(-8px);
+  }
+
+  /* Gradient border animation */
+  @keyframes gradient-border {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .gradient-border {
+    background: linear-gradient(-45deg, #8b5cf6, #3b82f6, #06b6d4, #10b981);
+    background-size: 400% 400%;
+    animation: gradient-border 3s ease infinite;
+  }
 }
 
 @layer components {
