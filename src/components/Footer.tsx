@@ -1,31 +1,30 @@
 'use client';
 
-import Link from 'next/link';
+import { useTranslations, useLocale } from 'next-intl';
+import { Link } from '@/i18n/routing';
 import { Package, Github, Twitter, Linkedin, Mail } from 'lucide-react';
-import { useLanguageStore } from '@/lib/store';
-import { translations } from '@/lib/translations';
 
 export default function Footer() {
-  const { language } = useLanguageStore();
-  const t = translations[language];
-  const isRTL = language === 'ar';
+  const locale = useLocale();
+  const t = useTranslations();
+  const isRTL = locale === 'ar';
 
   const footerLinks = {
     quickLinks: [
-      { name: t.home, href: '/' },
-      { name: t.products, href: '/services' },
-      { name: t.pricing, href: '/pricing' },
-      { name: t.about, href: '/about' },
+      { name: t('navigation.home'), href: '/' as const },
+      { name: t('navigation.products'), href: '/services' as const },
+      { name: t('navigation.pricing'), href: '/pricing' as const },
+      { name: t('navigation.about'), href: '/about' as const },
     ],
     support: [
       { name: isRTL ? 'مركز المساعدة' : 'Help Center', href: '/help' },
       { name: isRTL ? 'التوثيق' : 'Documentation', href: '/docs' },
-      { name: t.contact, href: '/contact' },
+      { name: t('navigation.contact'), href: '/contact' as const },
       { name: isRTL ? 'الحالة' : 'Status', href: '/status' },
     ],
     legal: [
-      { name: t.privacyPolicy, href: '/privacy' },
-      { name: t.termsOfService, href: '/terms' },
+      { name: t('footer.privacyPolicy'), href: '/privacy' },
+      { name: t('footer.termsOfService'), href: '/terms' },
       { name: isRTL ? 'سياسة ملفات تعريف الارتباط' : 'Cookie Policy', href: '/cookies' },
       { name: 'GDPR', href: '/gdpr' },
     ],
@@ -47,7 +46,7 @@ export default function Footer() {
             </Link>
             
             <p className={`text-gray-300 max-w-md leading-relaxed ${isRTL ? 'text-right' : 'text-left'}`}>
-              {t.footerDescription}
+              {t('footer.description')}
             </p>
             
             {/* Social Links */}
@@ -81,7 +80,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div className={isRTL ? 'text-right' : 'text-left'}>
-            <h3 className="text-lg font-semibold mb-4">{t.quickLinks}</h3>
+            <h3 className="text-lg font-semibold mb-4">{t('footer.quickLinks')}</h3>
             <ul className="space-y-3">
               {footerLinks.quickLinks.map((link) => (
                 <li key={link.name}>
@@ -98,7 +97,7 @@ export default function Footer() {
 
           {/* Support */}
           <div className={isRTL ? 'text-right' : 'text-left'}>
-            <h3 className="text-lg font-semibold mb-4">{t.support}</h3>
+            <h3 className="text-lg font-semibold mb-4">{t('footer.support')}</h3>
             <ul className="space-y-3">
               {footerLinks.support.map((link) => (
                 <li key={link.name}>
@@ -115,7 +114,7 @@ export default function Footer() {
 
           {/* Legal */}
           <div className={isRTL ? 'text-right' : 'text-left'}>
-            <h3 className="text-lg font-semibold mb-4">{t.legal}</h3>
+            <h3 className="text-lg font-semibold mb-4">{t('footer.legal')}</h3>
             <ul className="space-y-3">
               {footerLinks.legal.map((link) => (
                 <li key={link.name}>
@@ -135,7 +134,7 @@ export default function Footer() {
         <div className="border-t border-gray-700 mt-12 pt-8">
           <div className={`flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 ${isRTL ? 'md:flex-row-reverse text-right' : 'text-left'} md:text-center`}>
             <p className="text-gray-400 text-sm">
-              &copy; 2024 SaaSHub. {t.allRightsReserved}.
+              &copy; 2024 SaaSHub. {t('footer.allRightsReserved')}.
             </p>
             <div className={`flex items-center text-sm text-gray-400 ${isRTL ? 'space-x-reverse space-x-6' : 'space-x-6'}`}>
               <span>{isRTL ? 'صُنع بـ ❤️ للمطورين' : 'Made with ❤️ for developers'}</span>

@@ -20,7 +20,7 @@ export const routing = defineRouting({
       ar: '/services'
     },
     '/pricing': {
-      en: '/pricing', 
+      en: '/pricing',
       ar: '/pricing'
     },
     '/about': {
@@ -30,6 +30,22 @@ export const routing = defineRouting({
     '/contact': {
       en: '/contact',
       ar: '/contact'
+    },
+    '/cart': {
+      en: '/cart',
+      ar: '/cart'
+    },
+    '/login': {
+      en: '/login',
+      ar: '/login'
+    },
+    '/signup': {
+      en: '/signup',
+      ar: '/signup'
+    },
+    '/dashboard': {
+      en: '/dashboard',
+      ar: '/dashboard'
     }
   }
 });

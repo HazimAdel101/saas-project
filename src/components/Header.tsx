@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { useTranslations, useLocale } from 'next-intl';
+import { Link, usePathname } from '@/i18n/routing';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Badge } from '@/components/ui/badge';
@@ -14,31 +14,30 @@ import {
   ShoppingCart,
   Moon,
   Sun,
-  Globe,
   LogOut,
   Settings,
   Package
 } from 'lucide-react';
-import { useCartStore, useAuthStore, useLanguageStore } from '@/lib/store';
-import { translations } from '@/lib/translations';
+import { useCartStore, useAuthStore } from '@/lib/store';
+import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const { theme, setTheme } = useTheme();
   const { getItemCount } = useCartStore();
   const { user, isAuthenticated, logout } = useAuthStore();
-  const { language, setLanguage } = useLanguageStore();
+  const locale = useLocale();
   const pathname = usePathname();
   const itemCount = getItemCount();
-  const t = translations[language];
-  const isRTL = language === 'ar';
+  const t = useTranslations();
+  const isRTL = locale === 'ar';
 
   const navigation = [
-    { name: t.home, href: '/' },
-    { name: t.products, href: '/services' },
-    { name: t.pricing, href: '/pricing' },
-    { name: t.about, href: '/about' },
-    { name: t.contact, href: '/contact' },
+    { name: t('navigation.home'), href: '/' as const },
+    { name: t('navigation.products'), href: '/services' as const },
+    { name: t('navigation.pricing'), href: '/pricing' as const },
+    { name: t('navigation.about'), href: '/about' as const },
+    { name: t('navigation.contact'), href: '/contact' as const },
   ];
 
   return (
@@ -96,37 +95,7 @@ export default function Header() {
           {/* Actions - Always on the right side */}
           <div className={`flex items-center space-x-2 ${isRTL ? 'order-1 space-x-reverse' : 'order-3'}`}>
             {/* Language Switcher */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="btn-professional h-10 w-10 rounded-full hover:bg-accent/80 transition-all duration-200"
-                >
-                  <Globe className="h-4 w-4" />
-                  <span className="sr-only">Change language</span>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent
-                align={isRTL ? 'start' : 'end'}
-                className="dropdown-professional min-w-[140px]"
-              >
-                <DropdownMenuItem
-                  onClick={() => setLanguage('en')}
-                  className={`${isRTL ? 'text-right flex-row-reverse' : 'text-left'} cursor-pointer hover:bg-accent/50 transition-colors`}
-                >
-                  <span className="text-sm font-medium">English</span>
-                  {language === 'en' && <div className="w-2 h-2 bg-green-500 rounded-full ml-2"></div>}
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  onClick={() => setLanguage('ar')}
-                  className={`${isRTL ? 'text-right flex-row-reverse' : 'text-left'} cursor-pointer hover:bg-accent/50 transition-colors`}
-                >
-                  <span className="text-sm font-medium">العربية</span>
-                  {language === 'ar' && <div className="w-2 h-2 bg-green-500 rounded-full ml-2"></div>}
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            <LanguageSwitcher />
 
             {/* Theme Toggle */}
             <Button
@@ -156,7 +125,7 @@ export default function Header() {
                     <span className="ltr-numbers font-semibold">{itemCount}</span>
                   </Badge>
                 )}
-                <span className="sr-only">{t.cart} ({itemCount})</span>
+                <span className="sr-only">{t('navigation.cart')} ({itemCount})</span>
               </Button>
             </Link>
 
@@ -188,7 +157,7 @@ export default function Header() {
                       className={`flex items-center py-2 hover:bg-accent/50 transition-colors ${isRTL ? 'flex-row-reverse' : ''}`}
                     >
                       <Settings className={`h-4 w-4 ${isRTL ? 'ml-2' : 'mr-2'}`} />
-                      <span className={isRTL ? 'text-right' : 'text-left'}>{t.dashboard}</span>
+                      <span className={isRTL ? 'text-right' : 'text-left'}>{t('navigation.dashboard')}</span>
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem
@@ -196,7 +165,7 @@ export default function Header() {
                     className={`flex items-center py-2 hover:bg-accent/50 transition-colors text-destructive ${isRTL ? 'flex-row-reverse' : ''}`}
                   >
                     <LogOut className={`h-4 w-4 ${isRTL ? 'ml-2' : 'mr-2'}`} />
-                    <span className={isRTL ? 'text-right' : 'text-left'}>{t.logout || 'Logout'}</span>
+                    <span className={isRTL ? 'text-right' : 'text-left'}>{t('navigation.logout')}</span>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -208,14 +177,14 @@ export default function Header() {
                   asChild
                   className="btn-professional hover:bg-accent/80 transition-all duration-200"
                 >
-                  <Link href="/login">{t.login}</Link>
+                  <Link href="/login">{t('navigation.login')}</Link>
                 </Button>
                 <Button
                   size="sm"
                   asChild
                   className="btn-professional bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white shadow-lg hover:shadow-xl transition-all duration-200"
                 >
-                  <Link href="/signup">{t.signup}</Link>
+                  <Link href="/signup">{t('navigation.signup')}</Link>
                 </Button>
               </div>
             )}
@@ -282,14 +251,14 @@ export default function Header() {
                         onClick={() => setIsOpen(false)}
                         className="justify-start h-12 text-base"
                       >
-                        <Link href="/login">{t.login}</Link>
+                        <Link href="/login">{t('navigation.login')}</Link>
                       </Button>
                       <Button
                         asChild
                         onClick={() => setIsOpen(false)}
                         className="justify-start h-12 text-base bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
                       >
-                        <Link href="/signup">{t.signup}</Link>
+                        <Link href="/signup">{t('navigation.signup')}</Link>
                       </Button>
                     </div>
                   )}
@@ -318,7 +287,7 @@ export default function Header() {
                         >
                           <Link href="/dashboard" className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
                             <Settings className={`h-4 w-4 ${isRTL ? 'ml-3' : 'mr-3'}`} />
-                            {t.dashboard}
+                            {t('navigation.dashboard')}
                           </Link>
                         </Button>
                         <Button
@@ -331,7 +300,7 @@ export default function Header() {
                         >
                           <div className={`flex items-center ${isRTL ? 'flex-row-reverse' : ''}`}>
                             <LogOut className={`h-4 w-4 ${isRTL ? 'ml-3' : 'mr-3'}`} />
-                            {t.logout || 'Logout'}
+                            {t('navigation.logout')}
                           </div>
                         </Button>
                       </div>
