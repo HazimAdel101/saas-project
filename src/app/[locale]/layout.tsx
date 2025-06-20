@@ -19,7 +19,7 @@ export default async function LocaleLayout({
   params: { locale: string };
 }) {
   // Ensure the incoming `locale` is valid
-  if (!routing.locales.includes(locale as any)) {
+  if (!routing.locales.includes(locale as 'en' | 'ar')) {
     notFound();
   }
 
@@ -30,12 +30,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} dir={isRTL ? 'rtl' : 'ltr'} suppressHydrationWarning>
-      <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+      <head />
       <body
         className={`${isRTL ? 'font-arabic rtl' : 'font-inter ltr'}`}
         style={{

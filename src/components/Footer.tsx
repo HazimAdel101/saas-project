@@ -4,6 +4,18 @@ import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { Package, Github, Twitter, Linkedin, Mail } from 'lucide-react';
 
+type ValidRoute = '/' | '/services' | '/pricing' | '/about' | '/contact' | '/cart' | '/login' | '/signup' | '/dashboard';
+
+type FooterLink = {
+  name: string;
+  href: ValidRoute;
+  external?: false;
+} | {
+  name: string;
+  href: string;
+  external: true;
+};
+
 export default function Footer() {
   const locale = useLocale();
   const t = useTranslations();
@@ -17,17 +29,17 @@ export default function Footer() {
       { name: t('navigation.about'), href: '/about' as const },
     ],
     support: [
-      { name: isRTL ? 'مركز المساعدة' : 'Help Center', href: '/help' },
-      { name: isRTL ? 'التوثيق' : 'Documentation', href: '/docs' },
+      { name: isRTL ? 'مركز المساعدة' : 'Help Center', href: '#', external: true },
+      { name: isRTL ? 'التوثيق' : 'Documentation', href: '#', external: true },
       { name: t('navigation.contact'), href: '/contact' as const },
-      { name: isRTL ? 'الحالة' : 'Status', href: '/status' },
-    ],
+      { name: isRTL ? 'الحالة' : 'Status', href: '#', external: true },
+    ] as FooterLink[],
     legal: [
-      { name: t('footer.privacyPolicy'), href: '/privacy' },
-      { name: t('footer.termsOfService'), href: '/terms' },
-      { name: isRTL ? 'سياسة ملفات تعريف الارتباط' : 'Cookie Policy', href: '/cookies' },
-      { name: 'GDPR', href: '/gdpr' },
-    ],
+      { name: t('footer.privacyPolicy'), href: '#', external: true },
+      { name: t('footer.termsOfService'), href: '#', external: true },
+      { name: isRTL ? 'سياسة ملفات تعريف الارتباط' : 'Cookie Policy', href: '#', external: true },
+      { name: 'GDPR', href: '#', external: true },
+    ] as FooterLink[],
   };
 
   return (
@@ -51,30 +63,30 @@ export default function Footer() {
             
             {/* Social Links */}
             <div className={`flex ${isRTL ? 'space-x-reverse space-x-4 justify-end' : 'space-x-4 justify-start'} md:justify-start`}>
-              <Link
+              <a
                 href="#"
                 className="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors"
               >
                 <Github className="w-5 h-5" />
-              </Link>
-              <Link
+              </a>
+              <a
                 href="#"
                 className="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors"
               >
                 <Twitter className="w-5 h-5" />
-              </Link>
-              <Link
+              </a>
+              <a
                 href="#"
                 className="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors"
               >
                 <Linkedin className="w-5 h-5" />
-              </Link>
-              <Link
+              </a>
+              <a
                 href="#"
                 className="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors"
               >
                 <Mail className="w-5 h-5" />
-              </Link>
+              </a>
             </div>
           </div>
 
@@ -101,12 +113,21 @@ export default function Footer() {
             <ul className="space-y-3">
               {footerLinks.support.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-gray-300 hover:text-white transition-colors"
-                  >
-                    {link.name}
-                  </Link>
+                  {link.external ? (
+                    <a
+                      href={link.href}
+                      className="text-gray-300 hover:text-white transition-colors"
+                    >
+                      {link.name}
+                    </a>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      className="text-gray-300 hover:text-white transition-colors"
+                    >
+                      {link.name}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -118,12 +139,21 @@ export default function Footer() {
             <ul className="space-y-3">
               {footerLinks.legal.map((link) => (
                 <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-gray-300 hover:text-white transition-colors"
-                  >
-                    {link.name}
-                  </Link>
+                  {link.external ? (
+                    <a
+                      href={link.href}
+                      className="text-gray-300 hover:text-white transition-colors"
+                    >
+                      {link.name}
+                    </a>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      className="text-gray-300 hover:text-white transition-colors"
+                    >
+                      {link.name}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
