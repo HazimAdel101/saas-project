@@ -1,0 +1,116 @@
+{
+  "navigation": {
+    "home": "الرئيسية",
+    "products": "الخدمات",
+    "pricing": "الأسعار",
+    "about": "من نحن",
+    "contact": "اتصل بنا",
+    "login": "تسجيل الدخول",
+    "signup": "إنشاء حساب",
+    "dashboard": "لوحة التحكم",
+    "cart": "السلة",
+    "logout": "تسجيل الخروج"
+  },
+  "hero": {
+    "title": "اكتشف البرامج المتميزة",
+    "subtitle": "احصل على أفضل أدوات الذكاء الاصطناعي وبرامج التصميم وتطبيقات الإنتاجية من خلال متجر الاشتراكات الخاص بنا",
+    "subtitleHighlight": "متجر الاشتراكات",
+    "getStarted": "ابدأ الآن",
+    "learnMore": "اعرف المزيد",
+    "newFeature": "جديد: توصيات مدعومة بالذكاء الاصطناعي"
+  },
+  "features": {
+    "featuredProducts": "المنتجات المميزة",
+    "viewAll": "عرض الكل",
+    "popularProducts": "المنتجات الشائعة",
+    "categories": "الفئات",
+    "features": "المميزات"
+  },
+  "services": {
+    "title": "خدماتنا المتميزة",
+    "subtitle": "اكتشف قوة الذكاء الاصطناعي والإبداع مع مجموعتنا المختارة من الأدوات المتميزة",
+    "chatgpt": {
+      "title": "ChatGPT Plus",
+      "description": "محادثات ذكية متقدمة مع GPT-4، استجابات أسرع، وأولوية الوصول في أوقات الذروة.",
+      "features": {
+        "gpt4Access": "وصول إلى GPT-4",
+        "fasterResponse": "استجابات أسرع",
+        "priorityAccess": "أولوية الوصول",
+        "imageGeneration": "إنشاء الصور",
+        "webBrowsing": "تصفح الويب"
+      }
+    },
+    "canva": {
+      "title": "Canva Pro",
+      "description": "أدوات تصميم احترافية مع قوالب متميزة، مجموعة العلامة التجارية، ومميزات متقدمة.",
+      "features": {
+        "premiumTemplates": "قوالب متميزة",
+        "brandKit": "مجموعة العلامة التجارية",
+        "backgroundRemover": "خلفية شفافة",
+        "magicResize": "تغيير حجم سحري",
+        "stockPhotos": "مكتبة الصور"
+      }
+    },
+    "gemini": {
+      "title": "Google Gemini Advanced",
+      "description": "نموذج الذكاء الاصطناعي الأكثر قدرة من جوجل مع التفكير المتقدم والقدرات متعددة الوسائط.",
+      "features": {
+        "geminiUltra": "نموذج Gemini Ultra",
+        "multimodalAnalysis": "تحليل متعدد الوسائط",
+        "advancedReasoning": "تفكير متقدم",
+        "longContext": "معالجة النصوص الطويلة",
+        "googleWorkspace": "تكامل مع Google Workspace"
+      }
+    },
+    "subscribeNow": "اشترك الآن",
+    "learnMoreAbout": "اعرف المزيد"
+  },
+  "product": {
+    "month": "شهر",
+    "year": "سنة",
+    "per": "لكل",
+    "startFreeTrial": "ابدأ النسخة التجريبية",
+    "addToCart": "أضف إلى السلة",
+    "reviews": "تقييم",
+    "popular": "شائع",
+    "featured": "مميز",
+    "trial": "تجريبي",
+    "savings": "وفر"
+  },
+  "cart": {
+    "empty": "السلة فارغة",
+    "total": "المجموع",
+    "checkout": "إتمام الشراء",
+    "continueShopping": "متابعة التسوق"
+  },
+  "stats": {
+    "activeUsers": "المستخدمون النشطون",
+    "premiumTools": "الأدوات المتميزة",
+    "uptime": "وقت التشغيل"
+  },
+  "common": {
+    "loading": "جاري التحميل...",
+    "error": "خطأ",
+    "success": "نجح",
+    "cancel": "إلغاء",
+    "save": "حفظ",
+    "edit": "تعديل",
+    "delete": "حذف",
+    "search": "بحث",
+    "filter": "تصفية",
+    "sort": "ترتيب"
+  },
+  "footer": {
+    "description": "متجرك الموثوق للاشتراكات في البرامج المتميزة",
+    "quickLinks": "روابط سريعة",
+    "support": "الدعم",
+    "legal": "قانوني",
+    "privacyPolicy": "سياسة الخصوصية",
+    "termsOfService": "شروط الخدمة",
+    "allRightsReserved": "جميع الحقوق محفوظة"
+  },
+  "cta": {
+    "title": "ابدأ رحلتك مع الذكاء الاصطناعي اليوم",
+    "subtitle": "انضم إلى آلاف المستخدمين الذين يثقون في خدماتنا المتميزة"
+  }
+}

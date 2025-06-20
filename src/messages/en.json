@@ -1,0 +1,116 @@
+{
+  "navigation": {
+    "home": "Home",
+    "products": "Services",
+    "pricing": "Pricing",
+    "about": "About",
+    "contact": "Contact",
+    "login": "Login",
+    "signup": "Sign Up",
+    "dashboard": "Dashboard",
+    "cart": "Cart",
+    "logout": "Logout"
+  },
+  "hero": {
+    "title": "Unlock Premium Software",
+    "subtitle": "Access the best AI tools, design software, and productivity apps with our subscription marketplace",
+    "subtitleHighlight": "subscription marketplace",
+    "getStarted": "Get Started",
+    "learnMore": "Learn More",
+    "newFeature": "New: AI-Powered Recommendations"
+  },
+  "features": {
+    "featuredProducts": "Featured Products",
+    "viewAll": "View All",
+    "popularProducts": "Popular Products",
+    "categories": "Categories",
+    "features": "Features"
+  },
+  "services": {
+    "title": "Our Premium Services",
+    "subtitle": "Unlock the power of AI and creativity with our curated selection of premium tools",
+    "chatgpt": {
+      "title": "ChatGPT Plus",
+      "description": "Advanced AI conversations with GPT-4, faster responses, and priority access during peak times.",
+      "features": {
+        "gpt4Access": "Access to GPT-4",
+        "fasterResponse": "Faster response times",
+        "priorityAccess": "Priority access",
+        "imageGeneration": "Image generation",
+        "webBrowsing": "Web browsing"
+      }
+    },
+    "canva": {
+      "title": "Canva Pro",
+      "description": "Professional design tools with premium templates, brand kit, and advanced features.",
+      "features": {
+        "premiumTemplates": "Premium templates",
+        "brandKit": "Brand kit",
+        "backgroundRemover": "Background remover",
+        "magicResize": "Magic resize",
+        "stockPhotos": "Stock photos"
+      }
+    },
+    "gemini": {
+      "title": "Google Gemini Advanced",
+      "description": "Google's most capable AI model with advanced reasoning and multimodal capabilities.",
+      "features": {
+        "geminiUltra": "Gemini Ultra model",
+        "multimodalAnalysis": "Multimodal analysis",
+        "advancedReasoning": "Advanced reasoning",
+        "longContext": "Long context processing",
+        "googleWorkspace": "Google Workspace integration"
+      }
+    },
+    "subscribeNow": "Subscribe Now",
+    "learnMoreAbout": "Learn More"
+  },
+  "product": {
+    "month": "month",
+    "year": "year",
+    "per": "per",
+    "startFreeTrial": "Start Free Trial",
+    "addToCart": "Add to Cart",
+    "reviews": "reviews",
+    "popular": "Popular",
+    "featured": "Featured",
+    "trial": "trial",
+    "savings": "Save"
+  },
+  "cart": {
+    "empty": "Your cart is empty",
+    "total": "Total",
+    "checkout": "Checkout",
+    "continueShopping": "Continue Shopping"
+  },
+  "stats": {
+    "activeUsers": "Active Users",
+    "premiumTools": "Premium Tools",
+    "uptime": "Uptime"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "cancel": "Cancel",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort"
+  },
+  "footer": {
+    "description": "Your trusted marketplace for premium software subscriptions",
+    "quickLinks": "Quick Links",
+    "support": "Support",
+    "legal": "Legal",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "allRightsReserved": "All rights reserved"
+  },
+  "cta": {
+    "title": "Start Your AI Journey Today",
+    "subtitle": "Join thousands of users who trust our premium services"
+  }
+}
