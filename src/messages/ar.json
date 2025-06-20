@@ -112,5 +112,46 @@
   "cta": {
     "title": "ابدأ رحلتك مع الذكاء الاصطناعي اليوم",
     "subtitle": "انضم إلى آلاف المستخدمين الذين يثقون في خدماتنا المتميزة"
+  },
+  "auth": {
+    "login": {
+      "title": "مرحباً بعودتك",
+      "subtitle": "سجل دخولك إلى حسابك للمتابعة",
+      "email": "البريد الإلكتروني",
+      "password": "كلمة المرور",
+      "rememberMe": "تذكرني",
+      "forgotPassword": "نسيت كلمة المرور؟",
+      "signIn": "تسجيل الدخول",
+      "noAccount": "ليس لديك حساب؟",
+      "signUp": "إنشاء حساب",
+      "emailPlaceholder": "أدخل بريدك الإلكتروني",
+      "passwordPlaceholder": "أدخل كلمة المرور"
+    },
+    "signup": {
+      "title": "إنشاء حساب",
+      "subtitle": "انضم إلى آلاف المستخدمين الذين يثقون في منصتنا",
+      "name": "الاسم الكامل",
+      "email": "البريد الإلكتروني",
+      "password": "كلمة المرور",
+      "confirmPassword": "تأكيد كلمة المرور",
+      "agreeTerms": "أوافق على شروط الخدمة وسياسة الخصوصية",
+      "createAccount": "إنشاء حساب",
+      "haveAccount": "لديك حساب بالفعل؟",
+      "signIn": "تسجيل الدخول",
+      "namePlaceholder": "أدخل اسمك الكامل",
+      "emailPlaceholder": "أدخل بريدك الإلكتروني",
+      "passwordPlaceholder": "أنشئ كلمة مرور",
+      "confirmPasswordPlaceholder": "أكد كلمة المرور"
+    },
+    "validation": {
+      "emailRequired": "البريد الإلكتروني مطلوب",
+      "emailInvalid": "يرجى إدخال بريد إلكتروني صحيح",
+      "passwordRequired": "كلمة المرور مطلوبة",
+      "passwordMinLength": "كلمة المرور يجب أن تكون 8 أحرف على الأقل",
+      "nameRequired": "الاسم مطلوب",
+      "confirmPasswordRequired": "يرجى تأكيد كلمة المرور",
+      "passwordsNotMatch": "كلمات المرور غير متطابقة",
+      "termsRequired": "يجب الموافقة على الشروط"
+    }
   }
 }

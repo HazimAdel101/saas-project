@@ -2,7 +2,7 @@
 
 import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/routing';
-import { Package, Github, Twitter, Linkedin, Mail } from 'lucide-react';
+import { Package, ExternalLink, Mail } from 'lucide-react';
 
 type ValidRoute = '/' | '/services' | '/pricing' | '/about' | '/contact' | '/cart' | '/login' | '/signup' | '/dashboard';
 
@@ -66,24 +66,28 @@ export default function Footer() {
               <a
                 href="#"
                 className="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors"
+                aria-label="GitHub"
               >
-                <Github className="w-5 h-5" />
+                <ExternalLink className="w-5 h-5" />
               </a>
               <a
                 href="#"
                 className="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors"
+                aria-label="Twitter"
               >
-                <Twitter className="w-5 h-5" />
+                <ExternalLink className="w-5 h-5" />
               </a>
               <a
                 href="#"
                 className="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors"
+                aria-label="LinkedIn"
               >
-                <Linkedin className="w-5 h-5" />
+                <ExternalLink className="w-5 h-5" />
               </a>
               <a
                 href="#"
                 className="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors"
+                aria-label="Email"
               >
                 <Mail className="w-5 h-5" />
               </a>

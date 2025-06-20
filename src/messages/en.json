@@ -112,5 +112,46 @@
   "cta": {
     "title": "Start Your AI Journey Today",
     "subtitle": "Join thousands of users who trust our premium services"
+  },
+  "auth": {
+    "login": {
+      "title": "Welcome Back",
+      "subtitle": "Sign in to your account to continue",
+      "email": "Email",
+      "password": "Password",
+      "rememberMe": "Remember me",
+      "forgotPassword": "Forgot password?",
+      "signIn": "Sign In",
+      "noAccount": "Don't have an account?",
+      "signUp": "Sign up",
+      "emailPlaceholder": "Enter your email",
+      "passwordPlaceholder": "Enter your password"
+    },
+    "signup": {
+      "title": "Create Account",
+      "subtitle": "Join thousands of users who trust our platform",
+      "name": "Full Name",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "agreeTerms": "I agree to the Terms of Service and Privacy Policy",
+      "createAccount": "Create Account",
+      "haveAccount": "Already have an account?",
+      "signIn": "Sign in",
+      "namePlaceholder": "Enter your full name",
+      "emailPlaceholder": "Enter your email",
+      "passwordPlaceholder": "Create a password",
+      "confirmPasswordPlaceholder": "Confirm your password"
+    },
+    "validation": {
+      "emailRequired": "Email is required",
+      "emailInvalid": "Please enter a valid email",
+      "passwordRequired": "Password is required",
+      "passwordMinLength": "Password must be at least 8 characters",
+      "nameRequired": "Name is required",
+      "confirmPasswordRequired": "Please confirm your password",
+      "passwordsNotMatch": "Passwords do not match",
+      "termsRequired": "You must agree to the terms"
+    }
   }
 }
