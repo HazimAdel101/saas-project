@@ -63,28 +63,40 @@ export default function SignupPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) return;
 
     setIsLoading(true);
-    
+
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // Mock successful signup
-      login({
-        id: '1',
-        email: formData.email,
-        name: formData.name,
-        subscriptions: [],
-        createdAt: new Date(),
+      const response = await fetch('/api/auth/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          password: formData.password,
+          confirmPassword: formData.confirmPassword,
+        }),
       });
-      
-      // Redirect to dashboard
-      window.location.href = `/${locale}/dashboard`;
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // Signup successful
+        login(data.user);
+
+        // Redirect to dashboard
+        window.location.href = `/${locale}/dashboard`;
+      } else {
+        // Handle error
+        setErrors({ general: data.error || 'Signup failed' });
+      }
     } catch (error) {
       console.error('Signup error:', error);
+      setErrors({ general: 'Network error. Please try again.' });
     } finally {
       setIsLoading(false);
     }
@@ -121,6 +133,14 @@ export default function SignupPage() {
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* General Error */}
+              {errors.general && (
+                <div className="p-3 rounded-md bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800">
+                  <p className={`text-sm text-red-600 dark:text-red-400 ${isRTL ? 'text-right' : 'text-left'}`}>
+                    {errors.general}
+                  </p>
+                </div>
+              )}
               {/* Name Field */}
               <div className="space-y-2">
                 <Label htmlFor="name" className={`flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>

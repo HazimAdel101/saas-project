@@ -17,8 +17,11 @@ interface CartStore {
 interface AuthStore {
   user: User | null;
   isAuthenticated: boolean;
+  isLoading: boolean;
   login: (user: User) => void;
   logout: () => void;
+  setLoading: (loading: boolean) => void;
+  checkAuth: () => Promise<void>;
 }
 
 interface LanguageStore {
@@ -79,14 +82,45 @@ export const useCartStore = create<CartStore>()(
 
 export const useAuthStore = create<AuthStore>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       user: null,
       isAuthenticated: false,
+      isLoading: false,
       login: (user) => set({ user, isAuthenticated: true }),
-      logout: () => set({ user: null, isAuthenticated: false }),
+      logout: async () => {
+        try {
+          await fetch('/api/auth/logout', { method: 'POST' });
+        } catch (error) {
+          console.error('Logout error:', error);
+        }
+        set({ user: null, isAuthenticated: false });
+      },
+      setLoading: (loading) => set({ isLoading: loading }),
+      checkAuth: async () => {
+        try {
+          set({ isLoading: true });
+          const response = await fetch('/api/auth/me');
+
+          if (response.ok) {
+            const data = await response.json();
+            set({ user: data.user, isAuthenticated: true });
+          } else {
+            set({ user: null, isAuthenticated: false });
+          }
+        } catch (error) {
+          console.error('Auth check error:', error);
+          set({ user: null, isAuthenticated: false });
+        } finally {
+          set({ isLoading: false });
+        }
+      },
     }),
     {
       name: 'auth-storage',
+      partialize: (state) => ({
+        user: state.user,
+        isAuthenticated: state.isAuthenticated
+      }),
     }
   )
 );

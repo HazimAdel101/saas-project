@@ -46,28 +46,39 @@ export default function LoginPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) return;
 
     setIsLoading(true);
-    
+
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // Mock successful login
-      login({
-        id: '1',
-        email: formData.email,
-        name: formData.email.split('@')[0],
-        subscriptions: [],
-        createdAt: new Date(),
+      const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.password,
+          rememberMe: formData.rememberMe,
+        }),
       });
-      
-      // Redirect to dashboard or previous page
-      window.location.href = `/${locale}/dashboard`;
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // Login successful
+        login(data.user);
+
+        // Redirect to dashboard
+        window.location.href = `/${locale}/dashboard`;
+      } else {
+        // Handle error
+        setErrors({ general: data.error || 'Login failed' });
+      }
     } catch (error) {
       console.error('Login error:', error);
+      setErrors({ general: 'Network error. Please try again.' });
     } finally {
       setIsLoading(false);
     }
@@ -104,6 +115,14 @@ export default function LoginPage() {
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* General Error */}
+              {errors.general && (
+                <div className="p-3 rounded-md bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800">
+                  <p className={`text-sm text-red-600 dark:text-red-400 ${isRTL ? 'text-right' : 'text-left'}`}>
+                    {errors.general}
+                  </p>
+                </div>
+              )}
               {/* Email Field */}
               <div className="space-y-2">
                 <Label htmlFor="email" className={`flex items-center gap-2 ${isRTL ? 'flex-row-reverse' : ''}`}>
