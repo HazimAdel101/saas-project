@@ -88,8 +88,9 @@ export default function SignupPage() {
         // Signup successful
         login(data.user);
 
-        // Redirect to dashboard
-        window.location.href = `/${locale}/dashboard`;
+        // Redirect based on user role
+        const redirectPath = data.redirectTo || '/';
+        window.location.href = `/${locale}${redirectPath}`;
       } else {
         // Handle error
         setErrors({ general: data.error || 'Signup failed' });

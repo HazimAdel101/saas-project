@@ -82,7 +82,7 @@ export const useCartStore = create<CartStore>()(
 
 export const useAuthStore = create<AuthStore>()(
   persist(
-    (set, get) => ({
+    (set) => ({
       user: null,
       isAuthenticated: false,
       isLoading: false,

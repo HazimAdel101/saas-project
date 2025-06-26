@@ -67,7 +67,7 @@ export function isValidPassword(password: string): boolean {
 }
 
 // Sanitize user data for client
-export function sanitizeUser(user: any) {
-  const { password, ...sanitizedUser } = user;
+export function sanitizeUser(user: { password?: string; [key: string]: unknown }) {
+  const { password: _, ...sanitizedUser } = user;
   return sanitizedUser;
 }

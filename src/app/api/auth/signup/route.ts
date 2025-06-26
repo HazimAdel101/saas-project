@@ -67,12 +67,13 @@ export async function POST(request: NextRequest) {
 
     // Create response with sanitized user data
     const sanitizedUser = sanitizeUser(user);
-    
+
     const response = NextResponse.json(
-      { 
+      {
         message: 'User created successfully',
         user: sanitizedUser,
-        token 
+        token,
+        redirectTo: user.role === 'ADMIN' ? '/dashboard' : '/'
       },
       { status: 201 }
     );

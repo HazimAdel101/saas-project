@@ -70,8 +70,9 @@ export default function LoginPage() {
         // Login successful
         login(data.user);
 
-        // Redirect to dashboard
-        window.location.href = `/${locale}/dashboard`;
+        // Redirect based on user role
+        const redirectPath = data.redirectTo || '/dashboard';
+        window.location.href = `/${locale}${redirectPath}`;
       } else {
         // Handle error
         setErrors({ general: data.error || 'Login failed' });

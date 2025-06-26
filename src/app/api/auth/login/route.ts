@@ -4,7 +4,9 @@ import { verifyPassword, generateToken, isValidEmail, sanitizeUser } from '@/lib
 
 export async function POST(request: NextRequest) {
   try {
+    console.log('Login API called');
     const body = await request.json();
+    console.log('Request body:', { email: body.email, hasPassword: !!body.password });
     const { email, password, rememberMe } = body;
 
     // Validation
@@ -23,6 +25,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Find user by email
+    console.log('Looking for user with email:', email.toLowerCase());
     const user = await prisma.user.findUnique({
       where: { email: email.toLowerCase() },
       include: {
@@ -33,6 +36,7 @@ export async function POST(request: NextRequest) {
         }
       }
     });
+    console.log('User found:', !!user);
 
     if (!user) {
       return NextResponse.json(
@@ -59,12 +63,13 @@ export async function POST(request: NextRequest) {
 
     // Create response with sanitized user data
     const sanitizedUser = sanitizeUser(user);
-    
+
     const response = NextResponse.json(
-      { 
+      {
         message: 'Login successful',
         user: sanitizedUser,
-        token 
+        token,
+        redirectTo: user.role === 'ADMIN' ? '/dashboard' : '/'
       },
       { status: 200 }
     );
