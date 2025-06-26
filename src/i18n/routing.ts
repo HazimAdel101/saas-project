@@ -6,48 +6,7 @@ export const routing = defineRouting({
   locales: ['en', 'ar'],
 
   // Used when no locale matches
-  defaultLocale: 'en',
-
-  // The `pathnames` object holds pairs of internal and
-  // external paths. Based on the locale, the external
-  // paths are rewritten to the shared, internal ones.
-  pathnames: {
-    // If all locales use the same pathname, a single
-    // string or only the internal pathname can be provided.
-    '/': '/',
-    '/services': {
-      en: '/services',
-      ar: '/services'
-    },
-    '/pricing': {
-      en: '/pricing',
-      ar: '/pricing'
-    },
-    '/about': {
-      en: '/about',
-      ar: '/about'
-    },
-    '/contact': {
-      en: '/contact',
-      ar: '/contact'
-    },
-    '/cart': {
-      en: '/cart',
-      ar: '/cart'
-    },
-    '/login': {
-      en: '/login',
-      ar: '/login'
-    },
-    '/signup': {
-      en: '/signup',
-      ar: '/signup'
-    },
-    '/dashboard': {
-      en: '/dashboard',
-      ar: '/dashboard'
-    }
-  }
+  defaultLocale: 'en'
 });
 
 export const { Link, redirect, usePathname, useRouter } = createNavigation(routing);
