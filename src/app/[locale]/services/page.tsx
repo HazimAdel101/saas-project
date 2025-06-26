@@ -1,5 +1,3 @@
-'use client';
-
 import { useTranslations } from 'next-intl';
 import { useDirection } from '@/hooks/useDirection';
 import { Button } from '@/components/ui/button';
